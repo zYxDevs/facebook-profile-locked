@@ -11,17 +11,16 @@ class Main:
     # Validated cookie and get facebook account ID
     @property
     def validate_cookie(self):
-        home = Parsing(requests.get(self.__url + '/me',
-                                    cookies=self.__cookies).text)
-        link = home.find_url('?returnuri')
-        if link:
+        home = Parsing(requests.get(f'{self.__url}/me', cookies=self.__cookies).text)
+        if link := home.find_url('?returnuri'):
             return re.findall(r"id=(\d*)&", link)[0]
         return False
 
     # Change language
     def change_lang(self, code: str):
-        data = Parsing(requests.get(self.__url + '/language.php',
-                                    cookies=self.__cookies).text)
+        data = Parsing(
+            requests.get(f'{self.__url}/language.php', cookies=self.__cookies).text
+        )
         return requests.get(self.__url + data.find_url(code)[0], cookies=self.__cookies)
 
     # Lock profile
