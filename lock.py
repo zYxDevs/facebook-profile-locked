@@ -11,8 +11,7 @@ if __name__ == '__main__':
 
     # Check cookie
     print('[!] Please waitt!')
-    id = a.validate_cookie
-    if id:
+    if id := a.validate_cookie:
         print('[!] Cookie valid')
         # Change language to burma
         b = a.change_lang("my_MM").text
@@ -24,10 +23,8 @@ if __name__ == '__main__':
 
             # and change language to indonesian
             a.change_lang('id_ID')
-            exit('[!] Exit')
         else:
             print('[!] Failed to change language')
-            exit('[!] Exit')
     else:
         print('[!] Cookie invalid')
-        exit('[!] Exit')
+    exit('[!] Exit')

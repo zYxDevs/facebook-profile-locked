@@ -22,11 +22,10 @@ class Parsing:
                             url["href"]
                             ):
                 continue
-            if text:
-                if string in str(url):
+            if string in str(url):
+                if text:
                     lisT.append({"url": url["href"], "text": url.text})
-            else:
-                if string in str(url):
+                else:
                     lisT.append(url["href"])
         return lisT[0] if len(lisT) == 1 else lisT
 
